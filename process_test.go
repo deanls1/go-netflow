@@ -101,7 +101,7 @@ func TestSortedProcesses(t *testing.T) {
 
 	p1 := &Process{
 		Pid: "111",
-		TrafficStats: &trafficStatsEntry{
+		TrafficStats: &TrafficStatsEntry{
 			In:      100,
 			Out:     100,
 			InRate:  100,
@@ -111,7 +111,7 @@ func TestSortedProcesses(t *testing.T) {
 
 	p2 := &Process{
 		Pid: "222",
-		TrafficStats: &trafficStatsEntry{
+		TrafficStats: &TrafficStatsEntry{
 			In:      200,
 			Out:     200,
 			InRate:  200,
@@ -121,7 +121,7 @@ func TestSortedProcesses(t *testing.T) {
 
 	p3 := &Process{
 		Pid: "333",
-		TrafficStats: &trafficStatsEntry{
+		TrafficStats: &TrafficStatsEntry{
 			In:      300,
 			Out:     300,
 			InRate:  300,
@@ -131,7 +131,7 @@ func TestSortedProcesses(t *testing.T) {
 
 	p4 := &Process{
 		Pid: "444",
-		TrafficStats: &trafficStatsEntry{
+		TrafficStats: &TrafficStatsEntry{
 			In:      400,
 			Out:     400,
 			InRate:  400,

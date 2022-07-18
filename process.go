@@ -23,7 +23,7 @@ type Process struct {
 	Exe          string             `json:"exe"`
 	State        string             `json:"state"`
 	InodeCount   int                `json:"inode_count"`
-	TrafficStats *trafficStatsEntry `json:"traffic_stats"`
+	TrafficStats *TrafficStatsEntry `json:"traffic_stats"`
 
 	// todo: use ringbuffer array to reduce gc cost.
 	Ring []*trafficEntry `json:"ring"`
@@ -41,7 +41,7 @@ func (p *Process) getLastTrafficEntry() *trafficEntry {
 
 func (p *Process) analyseStats(sec int) {
 	var (
-		stats = new(trafficStatsEntry)
+		stats = new(TrafficStatsEntry)
 		thold = time.Now().Add(-time.Duration(sec) * time.Second).Unix()
 	)
 
@@ -130,7 +130,7 @@ func (p *Process) copy() *Process {
 		Exe:        p.Exe,
 		State:      p.State,
 		InodeCount: p.InodeCount,
-		TrafficStats: &trafficStatsEntry{
+		TrafficStats: &TrafficStatsEntry{
 			In:      p.TrafficStats.In,
 			Out:     p.TrafficStats.Out,
 			InRate:  p.TrafficStats.InRate,
@@ -146,7 +146,7 @@ type trafficEntry struct {
 	Out       int64 `json:"out"`
 }
 
-type trafficStatsEntry struct {
+type TrafficStatsEntry struct {
 	In         int64 `json:"in"`
 	Out        int64 `json:"out"`
 	InRate     int64 `json:"in_rate"`
@@ -199,7 +199,7 @@ func GetProcesses() (map[string]*Process, error) {
 			InodeCount:   1,
 			Name:         pname,
 			Exe:          exe,
-			TrafficStats: new(trafficStatsEntry),
+			TrafficStats: new(TrafficStatsEntry),
 		}
 	}
 
